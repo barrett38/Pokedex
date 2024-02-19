@@ -45,6 +45,15 @@ body {
   align-content: stretch;
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 #main-header #title {
   display: flex;
   flex-direction: column;
@@ -52,7 +61,8 @@ body {
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
-  animation: ;
+  animation: fadeIn 3s ease-in-out;
+  padding-top: 1px;
 }
 
 #main-header #title > * {
@@ -62,10 +72,10 @@ body {
 #main-header #title img {
   background: maroon;
   width: 4rem;
-  height: 4rem;
+  height: 1rem;
   object-fit: contain;
   border-radius: 50%;
-  border: 2px solid #ffc404;
+  border: 2px solid #ffc407;
   width: 33px;
   height: 33px;
 }

@@ -1,44 +1,56 @@
 import { useState, useEffect } from "react";
 
-export default function GetPokemon() {
+export default function GetStrongPokemon() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
+  const [strongPokemons, setStrongPokemons] = useState([]);
 
   useEffect(() => {
-    async function fetchPokemons() {
-      for (let i = 0; i < 12; i++) {
-        const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=100&offset=${i * 100}`
-        );
-
-        const data = await response.json();
-        const pokemons = await Promise.all(
-          data.results.map(async (pokemon) => {
-            const pokemonDataResponse = await fetch(pokemon.url);
-            const pokemonData = await pokemonDataResponse.json();
-            return {
-              name: pokemon.name,
-              image: pokemonData.sprites.front_default,
-              abilities: pokemonData.abilities.map((a) => a.ability.name),
-              stats: pokemonData.stats.map((s) => ({
-                name: s.stat.name,
-                base: s.base_stat,
-              })),
-              types: pokemonData.types.map((t) => t.type.name),
-            };
-          })
-        );
-
-        setLoadedPokemons((prevPokemons) => [...prevPokemons, ...pokemons]);
-      }
-    }
-
     fetchPokemons();
   }, []);
+
+  useEffect(() => {
+    getStrongPokemon();
+  }, [loadedPokemons]);
+
+  async function fetchPokemons() {
+    for (let i = 0; i < 12; i++) {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon?limit=100&offset=${i * 100}`
+      );
+
+      const data = await response.json();
+      const pokemons = await Promise.all(
+        data.results.map(async (pokemon) => {
+          const pokemonDataResponse = await fetch(pokemon.url);
+          const pokemonData = await pokemonDataResponse.json();
+          return {
+            name: pokemon.name,
+            image: pokemonData.sprites.front_default,
+            abilities: pokemonData.abilities.map((a) => a.ability.name),
+            stats: pokemonData.stats.map((s) => ({
+              name: s.stat.name,
+              base: s.base_stat,
+            })),
+            types: pokemonData.types.map((t) => t.type.name),
+          };
+        })
+      );
+
+      setLoadedPokemons((prevPokemons) => [...prevPokemons, ...pokemons]);
+    }
+  }
+
+  function getStrongPokemon() {
+    const strong = loadedPokemons.filter(
+      (pokemon) => pokemon.stats.find((s) => s.name === "attack").base > 99
+    );
+    setStrongPokemons(strong);
+  }
 
   return (
     <div>
       <ul id="pokemons">
-        {loadedPokemons.map((pokemon, index) => (
+        {strongPokemons.map((pokemon, index) => (
           <li key={index}>
             <div className="pokemon-card">
               <div>
