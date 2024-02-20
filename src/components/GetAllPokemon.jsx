@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 
 export default function GetAllPokemon() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchPokemons() {
-      for (let i = 0; i < 12; i++) {
+      setIsLoading(true);
+      setError(null);
+      try {
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=100&offset=${i * 100}`
+          `https://pokeapi.co/api/v2/pokemon?limit=150`
         );
 
         const data = await response.json();
@@ -16,6 +20,7 @@ export default function GetAllPokemon() {
             const pokemonDataResponse = await fetch(pokemon.url);
             const pokemonData = await pokemonDataResponse.json();
             return {
+              id: pokemonData.id,
               name: pokemon.name,
               image: pokemonData.sprites.front_default,
               abilities: pokemonData.abilities.map((a) => a.ability.name),
@@ -28,18 +33,29 @@ export default function GetAllPokemon() {
           })
         );
 
-        setLoadedPokemons((prevPokemons) => [...prevPokemons, ...pokemons]);
+        setLoadedPokemons(pokemons);
+      } catch (error) {
+        setError(error.message);
       }
+      setIsLoading(false);
     }
 
     fetchPokemons();
   }, []);
 
+  if (isLoading) {
+    return <div></div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <div>
       <ul id="pokemons">
-        {loadedPokemons.map((pokemon, index) => (
-          <li key={index}>
+        {loadedPokemons.map((pokemon) => (
+          <li key={pokemon.id}>
             <div className="pokemon-card">
               <div>
                 <img
