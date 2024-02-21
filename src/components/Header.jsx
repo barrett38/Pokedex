@@ -22,9 +22,6 @@ export default function Header() {
         <Link to="/BestEndurance">
           <img src={enduranceIcon} alt="Endurance" />
         </Link>
-        <Link to="/BestDefense">
-          <img src={shieldIcon} alt="Defense" />
-        </Link>
         <Link to="/">
           <img src={pokedex} alt="Ash's Pokemon" />
         </Link>

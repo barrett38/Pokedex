@@ -28,6 +28,7 @@
   box-sizing: border-box;
 }
 
+/* Very, very Top */
 #main-header {
   display: flex;
   flex-direction: column;
@@ -35,17 +36,12 @@
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
-  /* Flex Above */
-  background-color: transparent;
-  padding: 10px;
   position: fixed;
-  top: 0;
+  background-color: green;
+  /* Flexes above */
   width: 100%;
-  height: 11%;
-  z-index: 100;
-  padding-top: 0px;
-  padding-bottom: 11px;
-  padding-left: 2px;
+  height: 1%;
+  top: 0px;
 }
 
 body {
@@ -66,8 +62,10 @@ body {
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  /* Flexes */
 }
 
+/* Far left Navigation Bar */
 #main-header #title {
   display: flex;
   flex-direction: column;
@@ -75,6 +73,9 @@ body {
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  position: fixed;
+  background-color: transparent;
+  /* Flexes above */
   animation: fadeIn 3s ease-in-out;
   padding-top: 1px;
 }
