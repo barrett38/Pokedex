@@ -152,6 +152,8 @@ h1 {
   /* Animation */
   animation-name: fadeIn;
   animation-duration: 4s;
+  width: 92%;
+  height: 100%;
 }
 
 .pokemon-image {

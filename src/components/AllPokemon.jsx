@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
 
-export default function GetAllPokemon() {
+export default function AllPokemon() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -53,6 +54,7 @@ export default function GetAllPokemon() {
 
   return (
     <div>
+      <Header />
       <ul id="pokemons">
         {loadedPokemons.map((pokemon) => (
           <li key={pokemon.id}>

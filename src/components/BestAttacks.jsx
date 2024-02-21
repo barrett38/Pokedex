@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
 
-export default function GetAttackingPoke() {
+export default function BestAttacks() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -35,7 +36,9 @@ export default function GetAttackingPoke() {
 
         // Filter pokemons whose Attack stat is over 99
         const strongPokemons = pokemons.filter((pokemon) =>
-          pokemon.stats.some((stat) => stat.name === "attack" && stat.base > 99)
+          pokemon.stats.some(
+            (stat) => stat.name === "attack" && stat.base >= 110
+          )
         );
 
         setLoadedPokemons(strongPokemons);
@@ -58,6 +61,7 @@ export default function GetAttackingPoke() {
 
   return (
     <div>
+      <Header />
       <ul id="pokemons">
         {loadedPokemons.map((pokemon) => (
           <li key={pokemon.id}>

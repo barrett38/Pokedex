@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
 
-export default function GetFastPokemon() {
+export default function BestEndurance() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
-  const [fastPokemons, setFastPokemons] = useState([]);
+  const [highHPPokemons, setHighHPPokemons] = useState([]);
 
   useEffect(() => {
     fetchPokemons();
   }, []);
 
   useEffect(() => {
-    getFastPokemon();
+    getHighHPPokemon();
   }, [loadedPokemons]);
 
   async function fetchPokemons() {
@@ -40,17 +41,18 @@ export default function GetFastPokemon() {
     }
   }
 
-  function getFastPokemon() {
-    const fast = loadedPokemons.filter(
-      (pokemon) => pokemon.stats.find((s) => s.name === "speed").base > 99
+  function getHighHPPokemon() {
+    const highHP = loadedPokemons.filter(
+      (pokemon) => pokemon.stats.find((s) => s.name === "hp").base >= 110
     );
-    setFastPokemons(fast);
+    setHighHPPokemons(highHP);
   }
 
   return (
     <div>
+      <Header />
       <ul id="pokemons">
-        {fastPokemons.map((pokemon, index) => (
+        {highHPPokemons.map((pokemon, index) => (
           <li key={index}>
             <div className="pokemon-card">
               <div>

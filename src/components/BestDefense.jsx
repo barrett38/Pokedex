@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import Header from "./Header";
 
-export default function GetDefensivePokemon() {
+export default function BestDefense() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
   const [defensivePokemons, setDefensivePokemons] = useState([]);
 
@@ -42,13 +43,14 @@ export default function GetDefensivePokemon() {
 
   function getDefensivePokemon() {
     const defensive = loadedPokemons.filter(
-      (pokemon) => pokemon.stats.find((s) => s.name === "defense").base > 99
+      (pokemon) => pokemon.stats.find((s) => s.name === "defense").base >= 110
     );
     setDefensivePokemons(defensive);
   }
 
   return (
     <div>
+      <Header />
       <ul id="pokemons">
         {defensivePokemons.map((pokemon, index) => (
           <li key={index}>
