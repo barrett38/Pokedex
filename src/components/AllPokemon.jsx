@@ -65,11 +65,11 @@ export function AllPokemon() {
   // useEffect(() => {}, []);
 
   useEffect(() => {
-    fetchPokemons(333, setLoadedPokemons, setIsLoading, setError);
+    fetchPokemons(numOfPokemons, setLoadedPokemons, setIsLoading, setError);
   }, []);
 
   if (isLoading) {
-    return <div id="loading-header"></div>;
+    return <div id="loading-header">Loading...</div>;
   }
 
   if (error) {

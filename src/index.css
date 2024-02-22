@@ -35,16 +35,6 @@ body {
   top: 0px;
 }
 
-#pokedex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  align-content: stretch;
-  /* Flexes above */
-}
-
 /* Far left Navigation Bar */
 #title {
   display: flex;
@@ -55,12 +45,11 @@ body {
   align-content: stretch;
   position: fixed;
   background-color: transparent;
-  /* Flexes above */
   padding-top: 1px;
 }
 
 /* Icons in the NAV BAR */
-#main-header #title img {
+#title img {
   margin: 10px;
   background: maroon;
   width: 4rem;
@@ -94,7 +83,6 @@ body {
   background-color: red;
   box-shadow: 0px 11px 8px 0px rgba(0, 0, 0, 0.2);
   border-radius: 11px;
-  /* Animation */
   width: 92%;
   height: 100%;
 }
@@ -121,6 +109,8 @@ body {
   padding-left: 0;
 }
 
+/* Stats/Component Header */
+/* Ex: 'Fastest' or 'All Pokemon' */
 #component-header {
   display: flex;
   flex-direction: column;
@@ -138,6 +128,7 @@ body {
   background-color: transparent;
 }
 
+/* Header for 'Loading' screen */
 #loading-header {
   display: flex;
   flex-direction: column;
