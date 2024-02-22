@@ -51,6 +51,7 @@ export default function BestEndurance() {
   return (
     <div>
       <Header />
+      <h3 id="component-header">Best Endurance</h3>
       <ul id="pokemons">
         {highHPPokemons.map((pokemon, index) => (
           <li key={index}>

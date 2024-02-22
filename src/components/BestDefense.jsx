@@ -51,6 +51,7 @@ export default function BestDefense() {
   return (
     <div>
       <Header />
+      <h3 id="component-header">Best </h3>
       <ul id="pokemons">
         {defensivePokemons.map((pokemon, index) => (
           <li key={index}>

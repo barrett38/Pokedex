@@ -51,6 +51,7 @@ export default function BestSpeed() {
   return (
     <div>
       <Header />
+      <h3 id="component-header">Best Speed</h3>
       <ul id="pokemons">
         {fastPokemons.map((pokemon, index) => (
           <li key={index}>
