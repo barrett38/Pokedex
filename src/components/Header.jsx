@@ -23,7 +23,7 @@ export default function Header() {
           <img src={enduranceIcon} alt="Endurance" />
         </Link>
         <Link to="/">
-          <img src={pokedex} alt="Ash's Pokemon" />
+          <img src={shieldIcon} alt="Defense" />
         </Link>
       </div>
     </header>

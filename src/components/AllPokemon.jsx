@@ -1,10 +1,18 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
 
+// Constants
+const numOfPokemons = 333;
+const superiorLevel = 110;
+
+// Function to get all pokemons
 export default function AllPokemon() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  // Default useEffect:
+  // useEffect(() => {}, []);
 
   useEffect(() => {
     async function fetchPokemons() {
@@ -12,7 +20,9 @@ export default function AllPokemon() {
       setError(null);
       try {
         const response = await fetch(
-          `https://pokeapi.co/api/v2/pokemon?limit=150`
+          `https://pokeapi.co/api/v2/pokemon?limit=${numOfPokemons}`
+          // There are around 898 pokemons in the API,
+          // but we are not going to load all of them here
         );
 
         const data = await response.json();
@@ -102,4 +112,21 @@ export default function AllPokemon() {
       </ul>
     </div>
   );
+}
+
+// Functions to filter pokemons based on their stats
+export function bestAttack(pokemons) {
+  return pokemons.filter((pokemon) => pokemon.stats.attack >= superiorLevel);
+}
+
+export function bestSpeed(pokemons) {
+  return pokemons.filter((pokemon) => pokemon.stats.speed >= superiorLevel);
+}
+
+export function bestHp(pokemons) {
+  return pokemons.filter((pokemon) => pokemon.stats.hp >= superiorLevel);
+}
+
+export function bestDefense(pokemons) {
+  return pokemons.filter((pokemon) => pokemon.stats.defense >= superiorLevel);
 }

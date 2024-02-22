@@ -68,8 +68,8 @@ body {
   object-fit: contain;
   border-radius: 50%;
   border: 2px solid #ffc407;
-  width: 8%;
-  height: 8%;
+  width: 6%;
+  height: 6%;
 }
 
 #pokemons {
@@ -133,6 +133,23 @@ body {
   font-family: "Honk Regular", sans-serif;
   font-size: 208%;
   top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+}
+
+#loading-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  position: fixed;
+  /* Flexes above */
+  font-family: "Honk Regular", sans-serif;
+  font-size: 208%;
+  top: 11%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: transparent;
