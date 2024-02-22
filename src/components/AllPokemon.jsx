@@ -1,12 +1,51 @@
 import { useState, useEffect } from "react";
 import Header from "./Header";
+import PokemonCard from "./pokemonCard.jsx";
 
 // Constants
 const numOfPokemons = 333;
-const superiorLevel = 110;
+
+async function fetchPokemons(
+  numOfPokemons,
+  setLoadedPokemons,
+  setIsLoading,
+  setError
+) {
+  setIsLoading(true);
+  setError(null);
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon?limit=${numOfPokemons}`
+    );
+
+    const data = await response.json();
+    const pokemons = await Promise.all(
+      data.results.map(async (pokemon) => {
+        const pokemonDataResponse = await fetch(pokemon.url);
+        const pokemonData = await pokemonDataResponse.json();
+        return {
+          id: pokemonData.id,
+          name: pokemon.name,
+          image: pokemonData.sprites.front_default,
+          abilities: pokemonData.abilities.map((a) => a.ability.name),
+          stats: pokemonData.stats.map((s) => ({
+            name: s.stat.name,
+            base: s.base_stat,
+          })),
+          types: pokemonData.types.map((t) => t.type.name),
+        };
+      })
+    );
+
+    setLoadedPokemons(pokemons);
+  } catch (error) {
+    setError(error.message);
+  }
+  setIsLoading(false);
+}
 
 // Function to get all pokemons
-export default function AllPokemon() {
+export function AllPokemon() {
   const [loadedPokemons, setLoadedPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -67,66 +106,79 @@ export default function AllPokemon() {
       <Header />
       <ul id="pokemons">
         {loadedPokemons.map((pokemon) => (
-          <li key={pokemon.id}>
-            <div className="pokemon-card">
-              <div>
-                <img
-                  src={pokemon.image}
-                  alt={pokemon.name}
-                  className="pokemon-image"
-                />
-                <h2>{pokemon.name}</h2>
-              </div>
-
-              <div className="pokemon-card-parts">
-                <h3>Abilities</h3>
-                <ul>
-                  {pokemon.abilities.map((ability, index) => (
-                    <li key={index}>{ability}</li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pokemon-card-parts">
-                <h3>Stats</h3>
-                <ul>
-                  {pokemon.stats.map((stat, index) => (
-                    <li key={index}>
-                      {stat.name}: {stat.base}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pokemon-card-parts">
-                <h3>Types</h3>
-                <ul>
-                  {pokemon.types.map((type, index) => (
-                    <li key={index}>{type}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </li>
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </ul>
     </div>
   );
 }
 
-// Functions to filter pokemons based on their stats
-export function bestAttack(pokemons) {
-  return pokemons.filter((pokemon) => pokemon.stats.attack >= superiorLevel);
-}
+export function BestAttacks() {
+  const [loadedPokemons, setLoadedPokemons] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-export function bestSpeed(pokemons) {
-  return pokemons.filter((pokemon) => pokemon.stats.speed >= superiorLevel);
-}
+  useEffect(() => {
+    async function fetchPokemons() {
+      setIsLoading(true);
+      setError(null);
+      try {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon?limit=333`
+        );
+        const data = await response.json();
 
-export function bestHp(pokemons) {
-  return pokemons.filter((pokemon) => pokemon.stats.hp >= superiorLevel);
-}
+        const fetchedPokemons = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const pokemonDataResponse = await fetch(pokemon.url);
+            const pokemonData = await pokemonDataResponse.json();
+            return {
+              id: pokemonData.id,
+              name: pokemon.name,
+              image: pokemonData.sprites.front_default,
+              abilities: pokemonData.abilities.map((a) => a.ability.name),
+              stats: pokemonData.stats.map((s) => ({
+                name: s.stat.name,
+                base: s.base_stat,
+              })),
+              types: pokemonData.types.map((t) => t.type.name),
+            };
+          })
+        );
 
-export function bestDefense(pokemons) {
-  return pokemons.filter((pokemon) => pokemon.stats.defense >= superiorLevel);
+        // Filter pokemons whose Defense stat is over 99
+        const attackingPokemon = fetchedPokemons.filter((pokemon) =>
+          pokemon.stats.some(
+            (stat) => stat.name === "attack" && stat.base >= 110
+          )
+        );
+
+        setLoadedPokemons(attackingPokemon);
+      } catch (error) {
+        setError(error.message);
+      }
+      setIsLoading(false);
+    }
+
+    fetchPokemons();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  return (
+    <div>
+      <Header />
+      <ul id="pokemons">
+        {loadedPokemons.map((pokemon) => (
+          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        ))}
+      </ul>
+    </div>
+  );
 }
