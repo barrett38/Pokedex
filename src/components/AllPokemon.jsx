@@ -3,10 +3,10 @@ import Header from "./Header";
 import PokemonCard from "./pokemonCard.jsx";
 
 // Constants
-const numOfPokemons = 333;
+const numOfPokemons = 150;
 const statLevel = 110;
 
-// Only 1 API request is made to get all the pokemons
+// API request for Pokemons
 async function fetchPokemons(
   numOfPokemons,
   setLoadedPokemons,
@@ -104,11 +104,3 @@ export const BestAttacks = createStatComponent("attack");
 export const BestSpeed = createStatComponent("speed");
 export const BestEndurance = createStatComponent("hp");
 export const BestDefense = createStatComponent("defense");
-
-/*
-users table
-emails table
-map.random for pokemon for every sign-in every time
-check if email exists in emails table
-if it does user gets new pokemon
-*/

@@ -3,7 +3,6 @@ import attackIcon from "../assets/attackIcon.png";
 import speedIcon from "../assets/speedIcon.png";
 import enduranceIcon from "../assets/enduranceIcon.png";
 import shieldIcon from "../assets/shieldIcon.png";
-import pokedex from "../assets/pokedex.png";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -22,7 +21,7 @@ export default function Header() {
         <Link to="/BestEndurance">
           <img src={enduranceIcon} alt="Endurance" />
         </Link>
-        <Link to="/">
+        <Link to="/BestDefense">
           <img src={shieldIcon} alt="Defense" />
         </Link>
       </div>

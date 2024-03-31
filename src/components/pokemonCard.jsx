@@ -27,26 +27,6 @@ export default function PokemonCard({ pokemon }) {
             ))}
           </ul>
         </div>
-
-        {/* <div className="pokemon-card-parts">
-          <h3>Stats</h3>
-          <ul>
-            {pokemon.stats.map((stat, index) => (
-              <li key={index}>
-                {stat.name}: {stat.base}
-              </li>
-            ))}
-          </ul>
-        </div> */}
-
-        {/* <div className="pokemon-card-parts">
-          <h3>Types</h3>
-          <ul>
-            {pokemon.types.map((type, index) => (
-              <li key={index}>{type}</li>
-            ))}
-          </ul>
-        </div> */}
       </div>
     </li>
   );

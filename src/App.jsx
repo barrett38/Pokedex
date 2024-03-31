@@ -19,3 +19,7 @@ export default function App() {
     </Routes>
   );
 }
+
+/*
+https://github.com/barrett38/Pokedex
+*/
