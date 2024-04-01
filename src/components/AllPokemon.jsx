@@ -53,7 +53,7 @@ async function fetchPokemons(
 }
 
 // Function to create a component for a specific stat
-function createStatComponent(stat) {
+function createStatComponent(stat, title) {
   return function StatComponent() {
     const [loadedPokemons, setLoadedPokemons] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +85,7 @@ function createStatComponent(stat) {
     return (
       <div>
         <h3 id="component-header">
-          {stat.charAt(0).toUpperCase() + stat.slice(1)}
+          {title.charAt(0).toUpperCase() + title.slice(1)}
         </h3>
         <Header />
         <ul id="pokemons">
@@ -99,8 +99,8 @@ function createStatComponent(stat) {
 }
 
 // Create a component for each stat
-export const AllPokemon = createStatComponent("all");
-export const BestAttacks = createStatComponent("attack");
-export const BestSpeed = createStatComponent("speed");
-export const BestEndurance = createStatComponent("hp");
-export const BestDefense = createStatComponent("defense");
+export const AllPokemon = createStatComponent("all", "All Pokemon");
+export const BestAttacks = createStatComponent("attack", "Best Attacks");
+export const BestSpeed = createStatComponent("speed", "Best Speed");
+export const BestEndurance = createStatComponent("hp", "Best Endurance");
+export const BestDefense = createStatComponent("defense", "Best Defense");
