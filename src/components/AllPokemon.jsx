@@ -87,6 +87,7 @@ function createStatComponent(stat, title) {
         <h3 id="component-header">
           {title.charAt(0).toUpperCase() + title.slice(1)}
         </h3>
+
         <Header />
         <ul id="pokemons">
           {loadedPokemons.map((pokemon) => (

@@ -3,6 +3,10 @@ import attackIcon from "../assets/attackIcon.png";
 import speedIcon from "../assets/speedIcon.png";
 import enduranceIcon from "../assets/enduranceIcon.png";
 import shieldIcon from "../assets/shieldIcon.png";
+
+import LogIn from "../assets/LogIn.png";
+import SignUp from "../assets/SignUp.png";
+
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -23,6 +27,12 @@ export default function Header() {
         </Link>
         <Link to="/BestDefense">
           <img src={shieldIcon} alt="Defense" />
+        </Link>
+        {/* working */}
+        {/* COmmunicating with App.jsx */}
+
+        <Link to="/LogIn">
+          <img src={LogIn} alt="Log-in" />
         </Link>
       </div>
     </header>

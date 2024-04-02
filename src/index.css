@@ -9,6 +9,14 @@
   box-sizing: border-box;
 }
 
+h {
+  color: #ffc407;
+  padding-left: 20px;
+  padding-top: 10px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
 body {
   margin: 0;
   font-family: "Raleway", sans-serif;
@@ -22,14 +30,14 @@ body {
 /* Very, very Top */
 #main-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  /* Flexes above */
   position: fixed;
   background-color: transparent;
-  /* Flexes above */
   width: 100%;
   height: 11%;
   top: 0px;
@@ -61,6 +69,18 @@ body {
   height: 6%;
 }
 
+#title img {
+  margin: 10px;
+  background: maroon;
+  width: 4rem;
+  height: 1rem;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid #ffc407;
+  width: 6%;
+  height: 6%;
+}
+
 #pokemons {
   max-width: 70rem;
   list-style: none;
@@ -71,13 +91,13 @@ body {
 }
 
 .pokemon-card {
+  display: flex;
+  flex-direction: column;
   background-image: url("./assets/pokeBackground.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   text-align: center;
   background-color: red;
@@ -147,4 +167,101 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: transparent;
+}
+
+#log-in {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: stretch;
+  /* position: fixed; */
+  /* Flexes above */
+  font-family: "Honk Regular", sans-serif;
+  font-size: 208%;
+  top: 11%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+}
+
+.control,
+fieldset {
+  margin-bottom: 1rem;
+}
+
+.control.no-margin {
+  margin-bottom: 0;
+}
+
+.control label {
+  display: block;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+  color: #9bafaf;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.control input {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #758a8a;
+  background-color: #869999;
+  color: #142020;
+}
+
+.control select {
+  display: block;
+  width: 100%;
+  max-width: 15rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #758a8a;
+  background-color: #869999;
+  color: #142020;
+}
+
+.control:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+}
+
+.control:has(input[type="checkbox"]) label {
+  margin: 0;
+}
+
+.control input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  margin-right: 0.5rem;
+  border-radius: 0;
+  border: none;
+  background-color: transparent;
+  color: #d9e2f1;
+}
+
+.control-error {
+  color: #ffca99;
+  font-size: 0.8rem;
+  height: 2rem;
+  padding: 0.5rem 0;
+}
+
+.control-error p {
+  margin: 0;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
 }
