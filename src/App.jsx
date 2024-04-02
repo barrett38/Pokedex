@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import Signup from "./components/Login/Signup.jsx";
+// import Signup from "./components/Login/Signup.jsx";
+import ProfileEntry from "./components/Login/ProfileEntry.jsx";
 
 import {
   AllPokemon,
@@ -18,7 +19,7 @@ export default function App() {
       <Route path="/BestEndurance" element={<BestEndurance />} />
       <Route path="/BestDefense" element={<BestDefense />} />
       {/* Working */}
-      <Route path="/LogIn" element={<Signup />} />{" "}
+      <Route path="/LogIn" element={<ProfileEntry />} />{" "}
     </Routes>
   );
 }
