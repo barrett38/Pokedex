@@ -3,37 +3,27 @@ import attackIcon from "../assets/attackIcon.png";
 import speedIcon from "../assets/speedIcon.png";
 import enduranceIcon from "../assets/enduranceIcon.png";
 import shieldIcon from "../assets/shieldIcon.png";
-
 import LogIn from "../assets/LogIn.png";
-import SignUp from "../assets/SignUp.png";
-
 import { Link } from "react-router-dom";
+
+const routes = [
+  { path: "/", icon: PokeballPic, alt: "Pokeball" },
+  { path: "/BestAttacks", icon: attackIcon, alt: "Attack" },
+  { path: "/BestSpeed", icon: speedIcon, alt: "Speed" },
+  { path: "/BestEndurance", icon: enduranceIcon, alt: "Endurance" },
+  { path: "/BestDefense", icon: shieldIcon, alt: "Defense" },
+  { path: "/LogIn", icon: LogIn, alt: "Log-in" },
+];
 
 export default function Header() {
   return (
     <header id="main-header">
       <div id="title">
-        <Link to="/">
-          <img src={PokeballPic} alt="Pokeball" />
-        </Link>
-        <Link to="/BestAttacks">
-          <img src={attackIcon} alt="Attack" />
-        </Link>
-        <Link to="/BestSpeed">
-          <img src={speedIcon} alt="Speed" />
-        </Link>
-        <Link to="/BestEndurance">
-          <img src={enduranceIcon} alt="Endurance" />
-        </Link>
-        <Link to="/BestDefense">
-          <img src={shieldIcon} alt="Defense" />
-        </Link>
-        {/* working */}
-        {/* COmmunicating with App.jsx */}
-
-        <Link to="/LogIn">
-          <img src={LogIn} alt="Log-in" />
-        </Link>
+        {routes.map((route) => (
+          <Link to={route.path} key={route.path}>
+            <img src={route.icon} alt={route.alt} />
+          </Link>
+        ))}
       </div>
     </header>
   );

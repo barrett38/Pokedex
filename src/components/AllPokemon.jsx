@@ -2,11 +2,21 @@ import { useState, useEffect } from "react";
 import Header from "./Header";
 import PokemonCard from "./pokemonCard.jsx";
 
-// Constants
+// Filtering Constants
 const numOfPokemons = 150;
 const statLevel = 110;
+const API_URL = "https://pokeapi.co/api/v2/pokemon?limit=";
 
-// API request for Pokemons
+const NO_FILTER = "all";
+const STAT_ATTACK = "attack";
+const STAT_SPEED = "speed";
+const STAT_HP = "hp";
+const STAT_DEFENSE = "defense";
+
+///////////////////////////////////
+/// API REQUEST TO POKE API //////
+/////////////////////////////////
+
 async function fetchPokemons(
   numOfPokemons,
   setLoadedPokemons,
@@ -17,9 +27,7 @@ async function fetchPokemons(
   setIsLoading(true);
   setError(null);
   try {
-    const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=${numOfPokemons}`
-    );
+    const response = await fetch(`${API_URL}${numOfPokemons}`);
 
     const data = await response.json();
     let pokemons = await Promise.all(
@@ -52,7 +60,10 @@ async function fetchPokemons(
   setIsLoading(false);
 }
 
-// Function to create a component for a specific stat
+/////////////////////////////////
+/// POKEMON STAT FUNCTION //////
+///////////////////////////////
+
 function createStatComponent(stat, title) {
   return function StatComponent() {
     const [loadedPokemons, setLoadedPokemons] = useState([]);
@@ -99,9 +110,12 @@ function createStatComponent(stat, title) {
   };
 }
 
-// Create a component for each stat
-export const AllPokemon = createStatComponent("all", "All Pokemon");
-export const BestAttacks = createStatComponent("attack", "Best Attacks");
-export const BestSpeed = createStatComponent("speed", "Best Speed");
-export const BestEndurance = createStatComponent("hp", "Best Endurance");
-export const BestDefense = createStatComponent("defense", "Best Defense");
+/////////////////////////////////
+/// RUNNING FOR EACH STAT //////
+///////////////////////////////
+
+export const AllPokemon = createStatComponent(NO_FILTER, "All Pokemon");
+export const BestAttacks = createStatComponent(STAT_ATTACK, "Best Attacks");
+export const BestSpeed = createStatComponent(STAT_SPEED, "Best Speed");
+export const BestEndurance = createStatComponent(STAT_HP, "Best Endurance");
+export const BestDefense = createStatComponent(STAT_DEFENSE, "Best Defense");

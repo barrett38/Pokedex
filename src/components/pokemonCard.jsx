@@ -2,6 +2,7 @@ export default function PokemonCard({ pokemon }) {
   return (
     <li key={pokemon.id}>
       <div className="pokemon-card">
+        {/* Poke Name */}
         <div>
           <img
             src={pokemon.image}
@@ -11,6 +12,7 @@ export default function PokemonCard({ pokemon }) {
           <h2>{pokemon.name}</h2>
         </div>
 
+        {/* Abilities and Stats */}
         <div className="pokemon-card-parts">
           <h3>Abilities</h3>
           <ul>

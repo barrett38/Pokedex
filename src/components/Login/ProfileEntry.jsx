@@ -27,8 +27,8 @@ function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Welcome, Pokemon Master!</h2>
-      <p>Sign up here of Log in below!</p>
+      <h2 className="titles">Welcome, Pokemon Master!</h2>
+      <p className="titles">Sign up here or Log in below!</p>
 
       {/* Signup Full name info */}
       <div className="control-row">
@@ -86,12 +86,9 @@ function Signup() {
       </div>
 
       {/* Reset and Submit buttons */}
-      <p className="form-actions">
-        <button type="reset" className="button button-flat">
-          Reset
-        </button>
-        <button type="submit" className="button">
-          Sign up
+      <p className="control">
+        <button className="button" type="submit">
+          SIGN UP
         </button>
       </p>
     </form>
@@ -129,7 +126,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
+      <h2 className="titles">Login</h2>
 
       {/* Login Email */}
       <div className="control-row">
@@ -146,7 +143,7 @@ function Login() {
 
         {/* Login Email */}
         <Input
-          label="Login-Password"
+          label="Password"
           id="password"
           type="password"
           name="password"
@@ -158,8 +155,8 @@ function Login() {
       </div>
 
       {/* Login Button */}
-      <p className="form-actions">
-        <button className="button">Login</button>
+      <p className="control">
+        <button className="button">LOGIN</button>
       </p>
     </form>
   );
@@ -173,6 +170,7 @@ export default function ProfileEntry() {
   return (
     <>
       <Signup />
+      <hr style={{ borderColor: "#ffca99" }} />
       <Login />
     </>
   );
