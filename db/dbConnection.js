@@ -29,6 +29,29 @@ db.run(
   }
 );
 
+// Insert a new user
+db.run(
+  `INSERT INTO Users (FirstName, LastName) VALUES (?, ?)`,
+  ["John", "Doe"],
+  function (err) {
+    if (err) {
+      return console.log(err.message);
+    }
+    // get the last insert id
+    console.log(`A row has been inserted with rowid ${this.lastID}`);
+  }
+);
+
+// Select all users
+db.all(`SELECT * FROM Users`, [], (err, rows) => {
+  if (err) {
+    throw err;
+  }
+  rows.forEach((row) => {
+    console.log(row);
+  });
+});
+
 db.close((err) => {
   if (err) {
     console.error(err.message);
