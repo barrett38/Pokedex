@@ -126,7 +126,7 @@ function Login() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="titles">Login</h2>
+      <h2 className="login-welcome">Login</h2>
 
       {/* Login Email */}
       <div className="control-row">

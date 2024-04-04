@@ -14,6 +14,20 @@ app.get("/api/hello", (req, res) => {
   res.send({ express: "Hello From Express" });
 });
 
+// Registration route
+app.post("/register", (req, res) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  res.send(`Registration successful for email/username: ${email}`);
+});
+
+// Login route
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  res.send(`Login successful for email/username: ${email}`);
+});
+
 // Catch-all route to return the main index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
