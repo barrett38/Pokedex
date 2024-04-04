@@ -27,7 +27,7 @@ function Signup() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="titles">Welcome, Pokemon Master!</h2>
+      <h2 className="login-welcome">Welcome, Pokemon Master!</h2>
       <p className="titles">Sign up here or Log in below!</p>
 
       {/* Signup Full name info */}

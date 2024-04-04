@@ -185,6 +185,15 @@ body {
   background-color: transparent;
 }
 
+.login-welcome {
+  margin-bottom: 1rem;
+  padding-left: 20px;
+  /* font-style: italic;
+  color: #ffc407; */
+  font-family: "Honk Regular", sans-serif;
+  font-size: 208%;
+}
+
 .titles {
   margin-bottom: 1rem;
   padding-left: 20px;
