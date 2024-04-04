@@ -1,5 +1,4 @@
 /* Imports */
-
 @font-face {
   font-family: "Honk Regular";
   src: url("./assets/Honk-Regular.ttf");
@@ -27,30 +26,33 @@ body {
   padding-top: 11%;
 }
 
+/* ID Selectors */
+
 /* Very, very Top */
 #main-header {
+  /* Flexbox */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
-  /* Flexes above */
+  /* Remaining */
   position: fixed;
   background-color: transparent;
-  width: 100%;
-  height: 11%;
   top: 0px;
 }
 
 /* Far left Navigation Bar */
 #title {
+  /* Flexbox */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: stretch;
   align-content: stretch;
+  /* Remaining */
   position: fixed;
   background-color: transparent;
   padding-top: 1px;
@@ -69,18 +71,7 @@ body {
   height: 6%;
 }
 
-#title img {
-  margin: 10px;
-  background: maroon;
-  width: 4rem;
-  height: 1rem;
-  object-fit: contain;
-  border-radius: 50%;
-  border: 2px solid #ffc407;
-  width: 6%;
-  height: 6%;
-}
-
+/* Pokemon Cards */
 #pokemons {
   max-width: 70rem;
   list-style: none;
@@ -91,14 +82,19 @@ body {
 }
 
 .pokemon-card {
+  /* Flexbox */
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: stretch;
+  /* Remaining */
   background-image: url("./assets/pokeBackground.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-  align-items: center;
   text-align: center;
   background-color: red;
   box-shadow: 0px 11px 8px 0px rgba(0, 0, 0, 0.2);
@@ -107,6 +103,7 @@ body {
   height: 100%;
 }
 
+/* Image in Pokemon Card */
 .pokemon-image {
   width: 208px;
   height: 208px;
@@ -114,6 +111,7 @@ body {
   margin: 1px;
 }
 
+/* Stats/Parts in Pokemon Card */
 .pokemon-card-parts {
   border: 1px solid rgba(244, 89, 89, 1);
   background-color: rgba(244, 89, 89, 1);
@@ -129,17 +127,17 @@ body {
   padding-left: 0;
 }
 
-/* Stats/Component Header */
-/* Ex: 'Fastest' or 'All Pokemon' */
+/* Filtered Header Title */
 #component-header {
+  /* Flexbox */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   align-content: stretch;
+  /* Remaining */
   position: fixed;
-  /* Flexes above */
   width: 100%;
   height: 15%;
   font-family: "Honk Regular", sans-serif;
@@ -147,20 +145,21 @@ body {
   top: 0%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: maroon;
+  background-color: transparent;
   color: yellow;
 }
 
 /* Header for 'Loading' screen */
 #loading-header {
+  /* Flexbox */
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
   align-content: stretch;
+  /* Remaining */
   position: fixed;
-  /* Flexes above */
   font-family: "Honk Regular", sans-serif;
   font-size: 208%;
   top: 11%;
@@ -170,14 +169,14 @@ body {
 }
 
 #log-in {
+  /* Flexbox */
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
   align-content: stretch;
-  /* position: fixed; */
-  /* Flexes above */
+  /* Remaining */
   font-family: "Honk Regular", sans-serif;
   font-size: 208%;
   top: 11%;
@@ -186,17 +185,16 @@ body {
   background-color: transparent;
 }
 
-.control,
-fieldset {
-  margin-bottom: 1rem;
-  padding-left: 20px;
-}
-
 .titles {
   margin-bottom: 1rem;
   padding-left: 20px;
   font-style: italic;
   color: #ffc407;
+}
+
+.control {
+  margin-bottom: 1rem;
+  padding-left: 20px;
 }
 
 .control.no-margin {
@@ -223,26 +221,6 @@ fieldset {
   border: 1px solid #758a8a;
   background-color: #869999;
   color: #142020;
-}
-
-.control:has(input[type="checkbox"]) {
-  display: flex;
-  align-items: center;
-}
-
-.control:has(input[type="checkbox"]) label {
-  margin: 0;
-}
-
-.control input[type="checkbox"] {
-  display: inline-block;
-  width: auto;
-  max-width: none;
-  margin-right: 0.5rem;
-  border-radius: 0;
-  border: none;
-  background-color: transparent;
-  color: #d9e2f1;
 }
 
 .control-error {
