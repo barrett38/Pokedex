@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Initialize Supabase client
-
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
@@ -65,9 +64,10 @@ app.post("/login", async (req, res) => {
 });
 
 // Catch-all route to return the main index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+// Catch-all route commented out to allow for React routing
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "public", "index.html"));
+// });
 
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
