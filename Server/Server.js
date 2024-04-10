@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { createClient } = require("@supabase/supabase-js");
+const { Sequelize } = require("sequelize");
 
 const app = express();
 const PORT = process.env.PORT;
@@ -12,27 +12,40 @@ app.use(express.json());
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Initialize Sequelize
+const sequelize = new Sequelize(process.env.DATABASE_URL);
+
+// Define User model
+const User = sequelize.define("User", {
+  fullName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
+  termsAccepted: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
+});
 
 // Registration route
 app.post("/register", async (req, res) => {
   try {
     const { fullName, email, password, termsAccepted } = req.body;
-    const { data, error } = await supabase.from("Users").insert([
-      {
-        FullName: fullName,
-        Email: email,
-        Password: password,
-        TermsAccepted: termsAccepted,
-      },
-    ]);
-
-    if (error) {
-      throw error;
-    }
+    const user = await User.create({
+      fullName,
+      email,
+      password,
+      termsAccepted,
+    });
 
     res.send(`Registration successful for email/username: ${email}`);
   } catch (error) {
@@ -45,15 +58,15 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
-    const { data, error } = await supabase
-      .from("Users")
-      .select()
-      .eq("Email", email)
-      .eq("Password", password)
-      .single();
+    const user = await User.findOne({
+      where: {
+        email,
+        password,
+      },
+    });
 
-    if (error || !data) {
-      throw error || new Error("Invalid email/password");
+    if (!user) {
+      throw new Error("Invalid email/password");
     }
 
     res.send(`Login successful for email/username: ${email}`);
