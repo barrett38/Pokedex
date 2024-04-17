@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const { Sequelize } = require("sequelize");
-
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 const app = express();
 const PORT = process.env.PORT;
 
@@ -11,9 +11,6 @@ app.use(express.json());
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, "public")));
-
-// Initialize Sequelize
-const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 // Define User model
 const User = sequelize.define("User", {
@@ -75,12 +72,6 @@ app.post("/login", async (req, res) => {
     res.status(401).send("Invalid email/password");
   }
 });
-
-// Catch-all route to return the main index.html
-// Catch-all route commented out to allow for React routing
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "index.html"));
-// });
 
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
