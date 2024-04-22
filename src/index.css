@@ -276,6 +276,15 @@ body {
 
 /* form */
 
+body {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  height: 100vh; /* This will make the body element take up the full height of the viewport */
+  margin: 0; /* This will remove the default margin */
+  padding: 0; /* This will remove the default padding */
+}
+
 .form {
   border: 1px solid #f0f0f0;
   border-radius: 5px;
@@ -333,4 +342,10 @@ body {
 
 .auth-msg {
   margin-bottom: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

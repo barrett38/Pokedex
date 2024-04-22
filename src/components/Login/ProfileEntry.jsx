@@ -10,7 +10,7 @@ import useInput from "./useInput.js";
 export default function ProfileEntry() {
   return (
     <main>
-      <h1 className="welcome-message">Welcome, Pokemon Master!</h1>
+      <h1 className="login-welcome">Welcome, Pokemon Master!</h1>
       <form className="form auth-form">
         <input className="form-input" placeholder="Username" />
         <input className="form-input" placeholder="Password" />
@@ -22,7 +22,9 @@ export default function ProfileEntry() {
         </div>
         <button className="form-btn">Need to register</button>
       </form>
-      <button className="form-btn">Log In</button>
+      <div className="container">
+        <button className="form-btn">Log In</button>
+      </div>
     </main>
   );
 }
