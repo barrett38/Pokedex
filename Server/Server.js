@@ -4,7 +4,7 @@ const path = require("path");
 const { Sequelize } = require("sequelize");
 const sequelize = new Sequelize(process.env.DATABASE_URL);
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -21,7 +21,5 @@ app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
 
 // Commit ID of last saved changes:
 // f774fe793192459ed9fe8bccf970105bf715f797
-// This commit containe the Front end of the
-
 // Use this code to go back:
 // git reset --hard f774fe793192459ed9fe8bccf970105bf715f797
