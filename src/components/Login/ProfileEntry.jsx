@@ -1,9 +1,6 @@
 import { useState, useContext, createContext } from "react";
+import axios from "axios"; // installed axios already
 const AuthContext = createContext();
-
-///////////////////////////////////
-/// PUTTING IT ALL TOGETHER //////
-/////////////////////////////////
 
 export default function ProfileEntry() {
   const [username, setUsername] = useState("");
@@ -11,7 +8,10 @@ export default function ProfileEntry() {
   const [register, setRegister] = useState(true);
   // const { dispatch } = useContext(AuthContext);
 
-  const submitHandler = (e) => {};
+  const submitHandler = (e) => {
+    e.preventDefault();
+    let body = { username, password };
+  };
 
   return (
     <main>
