@@ -1,18 +1,22 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = 3000;
+// This may not be needed:
+// const { User } = require("./user.js");
+const { register, login } = require("./auth.js");
 
-// Middleware to parse JSON bodies
 app.use(express.json());
+app.use(cors());
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
 // Middleware to handle Account POST requests
-app.post("/register"); //, register);
-app.post("/login"); //, login);
+app.post("/register", register);
+app.post("/login", login);
 
 // Start the server
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
