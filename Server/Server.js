@@ -23,5 +23,9 @@ app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
 
 // Commit ID of last saved changes:
 // 8b354b558318620ecede6dbd7b45440de76fb889
+
+// Imported Register and Login from Auth:
+// a0d3d2933d2344f2ad16d2f257f29854603897fb
+
 // Use this code to go back:
-// git reset --hard 8b354b558318620ecede6dbd7b45440de76fb889
+// git reset --hard COMMITT_ID
