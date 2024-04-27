@@ -26,5 +26,8 @@ app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
 // Adjusted Header to include LogInPage route:
 // c407637d64ab27ea8a23cbf00c91ac51a9d83c5d
 
+// Added AuthContext, not used yet:
+// 290110f0cb9a630e330146e2e319a6a591fb692a
+
 // Use this code to go back:
 // git reset --hard COMMITT_ID
