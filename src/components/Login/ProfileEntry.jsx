@@ -1,5 +1,5 @@
 import { useState, useContext, createContext } from "react";
-import axios from "axios"; // installed axios already
+import axios from "axios";
 const AuthContext = createContext();
 
 export default function ProfileEntry() {
@@ -11,6 +11,18 @@ export default function ProfileEntry() {
   const submitHandler = (e) => {
     e.preventDefault();
     let body = { username, password };
+    // axios
+    //   .post(register ? "/register" : "/login", body)
+    //   .then((res) => {
+    //     dispatch({ type: "LOGIN", payload: res.data });
+    //   })
+    //   .catch((err) => {
+    //     if (err.response.data) {
+    //       alert(err.response.data);
+    //     }
+    //     console.error(err);
+    //   });
+    // console.log("submitHandler called");
   };
 
   return (

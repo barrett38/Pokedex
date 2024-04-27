@@ -4,8 +4,6 @@ const cors = require("cors");
 const path = require("path");
 const app = express();
 const PORT = 3000;
-// This may not be needed:
-// const { User } = require("./user.js");
 const { register, login } = require("./auth.js");
 
 app.use(express.json());
