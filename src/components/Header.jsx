@@ -3,7 +3,7 @@ import attackIcon from "../assets/attackIcon.png";
 import speedIcon from "../assets/speedIcon.png";
 import enduranceIcon from "../assets/enduranceIcon.png";
 import shieldIcon from "../assets/shieldIcon.png";
-import LogIn from "../assets/LogIn.png";
+import LogInIcon from "../assets/LogInIcon.png";
 import { Link } from "react-router-dom";
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
   { path: "/BestSpeed", icon: speedIcon, alt: "Speed" },
   { path: "/BestEndurance", icon: enduranceIcon, alt: "Endurance" },
   { path: "/BestDefense", icon: shieldIcon, alt: "Defense" },
-  { path: "/LogIn", icon: LogIn, alt: "Log-in" },
+  { path: "/LogInPage", icon: LogInIcon, alt: "Log-in" },
 ];
 
 export default function Header() {

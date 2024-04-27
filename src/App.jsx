@@ -18,12 +18,7 @@ export default function App() {
       <Route path="/BestSpeed" element={<BestSpeed />} />
       <Route path="/BestEndurance" element={<BestEndurance />} />
       <Route path="/BestDefense" element={<BestDefense />} />
-      {/* Working */}
-      <Route path="/LogIn" element={<ProfileEntry />} />{" "}
+      <Route path="/LogInPage" element={<ProfileEntry />} />{" "}
     </Routes>
   );
 }
-
-/*
-https://github.com/barrett38/Pokedex
-*/
